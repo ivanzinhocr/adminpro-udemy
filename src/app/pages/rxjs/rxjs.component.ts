@@ -26,7 +26,7 @@ export class RxjsComponent implements OnInit, OnDestroy {
   ngOnInit() {
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
@@ -38,7 +38,7 @@ export class RxjsComponent implements OnInit, OnDestroy {
 
         const salida = {
           valor: contador
-        }
+        };
 
         observer.next(salida);
 
