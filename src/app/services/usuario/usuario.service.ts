@@ -66,7 +66,7 @@ export class UsuarioService {
 
   login(usuario: Usuario, recordar: boolean = false) {
 
-    if (recordar){
+    if (recordar) {
       localStorage.setItem('email', usuario.email);
     } else {
       localStorage.removeItem('email');
@@ -105,7 +105,7 @@ export class UsuarioService {
   }
 
   cambiarImagen(archivo: File, id: string) {
-    this._subirArchivoService.subirArvhivo(archivo, 'usuarios', id)
+    this._subirArchivoService.subirArchivo(archivo, 'usuarios', id)
         .then( (resp: any) => {
           this.usuario.img = resp.usuario.img;
           swal('Imagen Actualizada', this.usuario.nombre, 'success');
@@ -129,7 +129,7 @@ export class UsuarioService {
                     .map((resp: any) => resp.usuarios);
   }
 
-  borrarUsuario(id) {
+  borrarUsuario(id: string) {
     const url = URL_SERVICIOS + '/usuario/' + id + '?token=' + this.token;
 
     return this.http.delete(url)

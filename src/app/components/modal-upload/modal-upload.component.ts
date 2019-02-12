@@ -22,7 +22,7 @@ export class ModalUploadComponent implements OnInit {
   }
 
   subirImagen() {
-    this._subirArchivoService.subirArvhivo(this.imagenSubir, this._modalUploadService.tipo, this._modalUploadService.id)
+    this._subirArchivoService.subirArchivo(this.imagenSubir, this._modalUploadService.tipo, this._modalUploadService.id)
                              .then(resp => {
                                console.log(resp);
                                this._modalUploadService.notificacion.emit(resp);
@@ -55,7 +55,8 @@ export class ModalUploadComponent implements OnInit {
     this.imagenSubir = archivo;
 
     const reader = new FileReader();
-    const urlImagenTemp = reader.readAsDataURL(archivo);
+
+    reader.readAsDataURL(archivo);
 
     reader.onloadend = () => this.imagenTemp = reader.result.toString();
   }

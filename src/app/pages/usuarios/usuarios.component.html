@@ -66,8 +66,8 @@
                     </tbody>
                 </table>
 
-                <button (click)="cambiarPagina(-1)" class="btn btn-secondary">Anteriores</button>
-                <button (click)="cambiarPagina(1)" class="btn btn-secondary">Siguientes</button>
+                <button (click)="cambiarPagina(-1)" [disabled]="pagina===1" class="btn btn-secondary">Anteriores</button>
+                <button (click)="cambiarPagina(1)" [disabled]="pagina===totalPaginas" class="btn btn-secondary">Siguientes</button>
             </div>
         </div>
     </div>

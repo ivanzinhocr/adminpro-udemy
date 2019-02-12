@@ -40,7 +40,7 @@ export class UsuariosComponent implements OnInit {
     });
   }
 
-  cambiarPagina(avance) {
+  cambiarPagina(avance: number) {
     this.pagina += avance;
 
     if (this.pagina <= 0) {
