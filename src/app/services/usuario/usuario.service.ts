@@ -22,6 +22,24 @@ export class UsuarioService {
     this.cargarStorage();
   }
 
+  renuevaToken() {
+    const url = URL_SERVICIOS + '/login/renuevatoken?token=' + this.token;
+
+    return this.http.get(url)
+                    .map((resp: any) => {
+                      this.token = resp.token;
+                      localStorage.setItem('token', this.token);
+
+                      return true;
+                    })
+                    .catch(err => {
+                      this.router.navigate(['/login']);
+                      swal('¡Sesión expirada!', 'Su sesión ha caducado', 'error');
+                      return Observable.throw(err);
+                    });
+  }
+
+
   estaLogueado() {
     return (this.token.length > 5) ? true : false;
   }
@@ -143,7 +161,7 @@ export class UsuarioService {
     return this.http.get(url);
   }
 
-  buscarUsuarios(termino: string){
+  buscarUsuarios(termino: string) {
     const url = URL_SERVICIOS + '/busqueda/coleccion/usuarios/' + termino;
 
     return this.http.get(url)

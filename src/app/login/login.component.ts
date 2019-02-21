@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       const token = googleUser.getAuthResponse().id_token;
 
       this._usuarioService.loginGoogle(token)
-        .subscribe(resp =>  window.location.href = '/dashboard'
+        .subscribe(resp =>  window.location.href = '/'
           // this.router.navigate(['/dashboard'])  non se sabe ben por que pero recarga mal a páxina
         );
     });
